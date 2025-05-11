@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>한일사다리</title>
+
+  <!-- 필수: 대표 이미지 -->
+  <meta property="og:image" content="http://hanilsadal.com/image/og_main2.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- 선택: 제목, 설명, URL도 같이 설정하면 좋아 -->
+  <meta property="og:title" content="한일사다리 – 고소작업 전문 서비스" />
+  <meta property="og:description" content="협소한 공간? 고난도 작업?
+믿고 맡기세요, 고소작업 전문 브랜드 한일사다리." />
+  <meta property="og:url" content="http://hanilsadal.com" />
+  <meta property="og:type" content="website" />
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Pretendard Font -->
+  <link href="https://cdn.jsdelivr.net/npm/pretendard/dist/web/variable/pretendardvariable.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./CSS/style.css" />
+</head>
+
+<body>
+  <div class="scroll-container">
+
+    <!-- 페이지 인디케이터 -->
+    <div class="page-indicator">
+      <div class="dot" data-index="0"></div>
+      <div class="dot" data-index="1"></div>
+      <div class="dot" data-index="2"></div>
+      <div class="dot" data-index="3"></div>
+      <div class="dot" data-index="4"></div>
+    </div>
+
+    <!-- 1페이지 -->
+    <section class="hero">
+      <video autoplay muted loop playsinline class="bg-video">
+        <source src="./image/hanil_intro.mp4" type="video/mp4" />
+      </video>
+    
+      <div class="hero-content">
+        <p class="intro-text fade-delay-1">높고 좁은 공간도 문제 없습니다.</p>
+    
+        <!-- 로고 -->
+        <img src="./image/intro_logo_wh.png" alt="한일사다리 로고" class="intro-logo" />
+    
+        <p class="intro-text fade-delay-2">고소·협소 작업, 정확함이 생명입니다.</p>
+        <p class="intro-text fade-delay-3">20년 경력, 수많은 현장을 통해 검증된 실력으로 작업합니다.</p>
+      </div>
+    
+      <div class="scroll-hint-wrapper">
+        <div class="scroll-hint">
+          <div class="arrow">↓</div>
+          <div class="scroll-text">아래에서 작업 분야를 확인하세요</div>
+        </div>
+      </div>
+      
+    </section>
+
+    <div class="floating-call">
+      <div class="floating-call-icon">
+        <button class="call-icon-button" data-bs-toggle="modal" data-bs-target="#phoneModal">
+          <span class="material-icons">call</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 2페이지 -->
+    <section class="section-chat d-flex flex-column justify-content-center align-items-start py-4">
+      <div class="message-bubble">
+        <p class="message-text mb-0 fw-semibold">믿고 맡길 수 있는 사다리차 서비스!</p>
+        <p class="message-text fw-semibold">복잡한 상황, 걱정 없이 맡기세요.</p>
+        <p>작업 동선, 공간 제약, 장비 이해까지 <br> 전문가가 직접 판단합니다.</p>
+      </div>
+      <img src="./image/hanli_person.png" alt="사다리 인물" class="chat-img">
+    </section>
+
+    <!-- 3페이지 -->
+    <section class="section-work py-3">
+      <div class="container text-center">
+        <h2 class="mb-3 fw-semibold">현장 경험으로 다져진 작업 분야</h2>
+        <p class="fade-in-up delay-1 mb-1">건설부터 철거까지, 다양한 작업 현장에서 함께했습니다.</p>
+        <p class="fade-in-up delay-2">한눈에 보고 원하는 작업을 아래에서 하나씩 확인해보세요!</p>
+
+        <div class="row row-cols-1 g-4 justify-content-center">
+          <div class="col">
+            <div class="work-card">
+              <img src="./image/construction/1.png" class="work-card-img" alt="건설 현장">
+              <div class="work-card-body">
+                <h5 class="fw-semibold">건설 현장</h5>
+                <p class="text-muted small">창호, 자재 등 반복 고소 운반 작업</p>
+              </div>
+            </div>
+          </div>
+      
+          <div class="col">
+            <div class="work-card">
+              <img src="./image/demolition/1.png" class="work-card-img" alt="철거 현장">
+              <div class="work-card-body">
+                <h5 class="fw-semibold">철거 현장</h5>
+                <p class="text-muted small">폐기물 하역, <br> 구조물 철거</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-badge-line">
+          <span>🧰 20년 경력</span>
+          &nbsp;|&nbsp;
+          <span>🏗️ 건설·철거 전문</span>
+          &nbsp;|&nbsp;
+          <span>💬 친절상담</span>
+        </div>
+      </div>
+    </section>
+
+   <!-- 4페이지 -->
+    <section class="section-work py-2">
+      <div class="container text-center">
+        <h2 class="mb-3 fw-semibold">고객 맞춤형 이사 및 특수 작업</h2>
+        <p class="fade-in-up delay-1">무거운 가구나 이사 짐, 특수 장비 운반까지<br>꼼꼼하고 빠르게 처리해드립니다.</p>
+        <p class="fade-in-up delay-2">일반 작업과는 다른 세심한 접근이 필요한 작업들,<br>상황에 따라 달라지는 노하우가 필요합니다.</p>
+
+        <div class="row row-cols-1 g-4 justify-content-center">
+          <div class="col">
+            <div class="work-card">
+              <img src="./image/move/1.png" class="work-card-img" alt="이사">
+              <div class="work-card-body">
+                <h5 class="fw-semibold">이사 작업</h5>
+                <p class="text-muted small ">가전/가구 <br> 빠른 이송</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="work-card">
+              <img src="./image/special/1.png" class="work-card-img" alt="특수 작업">
+              <div class="work-card-body">
+                <h5 class="fw-semibold">특수 작업</h5>
+                <p class="text-muted small">간판·깃대 등 <br> 고소 위치 정밀 운반 </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="move-badge-line">
+          <span>🧩 테트리스 장인</span>
+          &nbsp;|&nbsp;
+          <span>💡 공간 활용 고수</span> <br>
+          <span>🎯 고난도 작업 대응</span>
+          &nbsp;|&nbsp;
+          <span>🦺 안전+정밀 작업</span>
+        </div>
+      </div> 
+    </section>
+
+    <!-- 5페이지: 작업 갤러리 전체 -->
+    <section class="section-gallery" id="gallery-section">
+      <div class="container h-100 d-flex flex-column justify-content-start">
+        <div class="gallery-header text-center mb-1">
+          <div class="gallery-logo-wrapper text-center mb-1">
+            <img src="./image/hanil_logo.png" class="gallery-logo" />
+            <p class="logo-caption">20년 경력의 고소작업 전문가</p>
+          </div>
+          <h2 class="fw-semibold text-dark" style="font-size: 1.45rem;">작업 사진 모아보기</h2>
+        </div>
+    
+        <div class="d-flex justify-content-center flex-wrap gap-2">
+          <button class="gallery-filter-btn" onclick="filterGallery('all')">전체</button>
+          <button class="gallery-filter-btn" onclick="filterGallery('construction')">건설</button>
+          <button class="gallery-filter-btn" onclick="filterGallery('demolition')">철거</button>
+          <button class="gallery-filter-btn" onclick="filterGallery('move')">이사</button>
+          <button class="gallery-filter-btn" onclick="filterGallery('special')">특수</button>
+        </div>
+    
+        <div class="gallery-scroll-area flex-grow-1 overflow-auto">
+          <div class="row g-3" id="galleryGrid"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 모달 -->
+  <div class="modal fade" id="phoneModal" tabindex="-1" aria-labelledby="phoneModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content phone-modal">
+        <div class="modal-header border-0 position-relative p-0">
+          <!-- 로고: 가운데 -->
+          <div class="w-100 d-flex justify-content-center py-2">
+            <img src="./image/hanil_logo.png" alt="한일 사다리 로고" class="modal-logo" />
+          </div>
+          <!-- 닫기 버튼: 오른쪽 상단에 절대 위치 -->
+          <button type="button" class="btn-close position-absolute top-0 end-0 mt-2 me-2"
+                  data-bs-dismiss="modal" aria-label="닫기"></button>
+        </div>
+        <div class="modal-body">
+          <p class="phone-number" id="phoneNumber">010-0000-0000</p>
+          <!-- PC용 복사 버튼 -->
+          <button id="copyBtn" class="btn copy-btn">번호 복사하기</button>
+          <!-- 모바일용 전화 버튼 -->
+          <a id="telBtn" href="tel:01000000000" class="btn copy-btn" style="display: none;">
+            지금 전화하기
+          </a>
+          <p class="contact-hint">💬 처음에 "웹사이트 보고 연락드려요"<br>라고 말씀해주시면 빠르게 도와드릴게요!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const sections = document.querySelectorAll("section");
+      const dots = document.querySelectorAll(".dot");
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const index = Array.from(sections).indexOf(entry.target);
+            dots.forEach(dot => dot.classList.remove("active"));
+            if (dots[index]) dots[index].classList.add("active");
+          }
+        });
+      }, { threshold: 0.6 });
+
+      sections.forEach(section => observer.observe(section));
+    });
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+    const telBtn = document.getElementById("telBtn");
+    const copyBtn = document.getElementById("copyBtn");
+
+    if (isMobile) {
+      telBtn.style.display = "inline-block";
+      copyBtn.style.display = "none";
+    } else {
+      telBtn.style.display = "none";
+      copyBtn.style.display = "inline-block";
+    }
+  });
+
+  function copyPhoneNumber() {
+    const number = document.getElementById("phoneNumber")?.innerText;
+    if (!number) return;
+
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(number)
+        .then(() => alert("전화번호가 복사되었습니다!"))
+        .catch(() => fallbackCopy(number));
+    } else {
+      fallbackCopy(number);
+    }
+  }
+
+  function fallbackCopy(text) {
+    const input = document.createElement("textarea");
+    input.value = text;
+    document.body.appendChild(input);
+    input.select();
+    try {
+      document.execCommand("copy");
+      alert("전화번호가 복사되었습니다!");
+    } catch (e) {
+      alert("복사에 실패했습니다. 직접 복사해주세요.");
+    }
+    document.body.removeChild(input);
+  }
+  </script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target); // 한 번만 실행되도록
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+  });
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const button = document.querySelector('.call-icon-button');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.target.classList.contains("hero")) {
+          if (entry.isIntersecting) {
+            button.classList.add("hero-style");
+          } else {
+            button.classList.remove("hero-style");
+          }
+        }
+      });
+    }, { threshold: 0.6 });
+
+    const heroSection = document.querySelector('.hero');
+    if (heroSection) {
+      observer.observe(heroSection);
+    }
+  });
+
+</script>
+
+<script>
+  const imageMap = {
+    construction: [
+      './image/construction/1.png',
+    ],
+    demolition: [
+      './image/demolition/1.png',
+    ],
+    move: [
+      './image/move/1.png',
+    ],
+    special: [
+     './image/special/1.png',
+    ],
+
+  };
+  
+  function filterGallery(type) {
+    const grid = document.getElementById('galleryGrid');
+    grid.innerHTML = '';
+  
+    let images = [];
+  
+    if (type === 'all') {
+      for (const key in imageMap) {
+        images = images.concat(imageMap[key]);
+      }
+    } else {
+      images = imageMap[type] || [];
+    }
+  
+    images.forEach((src) => {
+      const col = document.createElement('div');
+      col.className = 'col-6 col-md-4 col-lg-3';
+      col.innerHTML = `
+        <div class="card border-0 shadow-sm h-100">
+          <div style="height: 150px; overflow: hidden;">
+            <img src="${src}" class="img-fluid w-100 h-100" style="object-fit: cover; cursor: pointer;" onclick="window.open('${src}', '_blank')">
+          </div>
+        </div>
+      `;
+      grid.appendChild(col);
+    });
+  }
+  
+  // 페이지 로드시 전체 이미지 보여줌
+  document.addEventListener("DOMContentLoaded", () => {
+    filterGallery('all');
+  });
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const section = document.querySelector("#gallery-section");
+      const logo = section?.querySelector(".gallery-logo");
+      const caption = section?.querySelector(".logo-caption");
+    
+      if (!section || !logo || !caption) return;
+    
+      let logoAnimating = false;
+    
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !logoAnimating) {
+            logoAnimating = true;
+            replayAnimation(logo, "animate-logo");
+    
+            // 로고가 끝나면 문구 떨어지기
+            logo.addEventListener("animationend", () => {
+              replayAnimation(caption, "animate-drop");
+            }, { once: true });
+    
+            // 3초 후 다시 재실행 가능하도록
+            setTimeout(() => {
+              logoAnimating = false;
+            }, 3000);
+          }
+        });
+      }, { threshold: 0.5 });
+    
+      observer.observe(section);
+    
+      function replayAnimation(el, className) {
+        el.classList.remove(className);
+
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        void el.offsetWidth;
+        el.classList.add(className);
+      }
+    });
+  </script>
+
+  <script>
+    window.addEventListener('resize', setRealHeight);
+    window.addEventListener('load', setRealHeight);
+
+    function setRealHeight() {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+  </script>
+  
+  <script>
+    document.addEventListener('contextmenu', e => e.preventDefault()); // 우클릭 방지
+    document.addEventListener('keydown', e => {
+      if (
+        e.key === 'F12' ||
+        (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key)) ||
+        (e.ctrlKey && e.key === 'U')
+      ) {
+        e.preventDefault();
+      }
+    });
+  </script>
+
+<!-- Bootstrap JS + Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+</html>

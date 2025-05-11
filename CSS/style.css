@@ -1,0 +1,1026 @@
+:root {
+  --primary-blue: #4f80ff;     /* 부드러운 신뢰 블루 (기본) */
+  --secondary-blue: #6a9eff;   /* hover나 강조용 */
+  --background-blue: #eaf1ff;  /* 라이트 배경 */
+
+  --text-dark: #2e2e2e;        /* 제목, 로고 등 */
+  --text-muted: #6b6b6b;       /* 설명 텍스트 */
+
+  --border-gray: #d9dce1;      /* 버튼/박스 테두리 */
+  --soft-gray-bg: #f6f8fa;     /* 카드 배경이나 섹션 구분용 */
+
+  --accent-green: #90d7c7;     /* 포인트 강조 (선택) */
+  --accent-yellow: #fff4b8;    /* 주의/배지용 포인트 */
+
+  --accent-orange: #ffb680;   /* 따뜻한 CTA/배지용 */
+  --accent-pink: #f6c2de;     /* 말풍선, 감성 강조 */
+  --accent-navy: #3e4f73;     /* 깊이감 강조용 (배경/타이틀) */
+  
+}
+
+/* =========================== */
+/* 기본 설정 */
+/* =========================== */
+body {
+  font-family: 'Pretendard Variable', sans-serif;
+  background-color: #f3f2f5;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+h2, .message-text {
+  color: var(--primary-blue);
+}
+
+/* =========================== */
+/* 페이지 스크롤/섹션 설정 */
+/* =========================== */
+.scroll-container {
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  position: relative;
+}
+
+section {
+  scroll-snap-align: start;
+  position: relative;
+}
+
+/* =========================== */
+/* 페이지 인디케이터 */
+/* =========================== */
+.page-indicator {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 999;
+}
+.page-indicator .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #bbb;  /* 기본 회색 */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.page-indicator .dot.active {
+  background-color: var(--primary-blue);  /* 완전히 파란 점으로 꽉 채움 */
+  transform: scale(1.2);       /* 살짝 커지는 효과 */
+}
+
+.page-indicator .dot.active::before {
+  opacity: 1;          /* 활성화 시 보이게 */
+}
+
+/* =========================== */
+/* Hero 영역 */
+/* =========================== */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-container,
+section,
+.hero {
+  height: calc(var(--vh, 1vh) * 100);
+}
+
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 1rem;
+  color: white;
+  text-align: center;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+
+.intro-text {
+  font-size: 1rem;
+  margin: 0.4rem 0;
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+  text-align: center;
+  max-width: 90%;             
+  word-break: keep-all;       
+  white-space: normal;         
+  line-height: 1.5;
+}
+
+.fade-delay-1 { animation-delay: 0.1s; }
+.fade-delay-2 { animation-delay: 0.3s; }
+.fade-delay-3 { animation-delay: 0.5s; }
+
+.intro-logo {
+  width: 250px;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+}
+
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.scroll-hint-wrapper {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.scroll-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-size: 13px;
+  color: #f3f2f5;
+  white-space: nowrap;
+  opacity: 0;
+  animation: fadeInUp 1s ease-in-out 1.5s forwards;
+}
+
+.scroll-hint .arrow {
+  font-size: 30px;
+  display: block;
+  animation: bounceArrow 1.5s infinite;
+}
+
+/* =========================== */
+/* 전화 버튼 */
+/* =========================== */
+.floating-call-icon {
+  position: fixed;
+  bottom: 28px;
+  right: 24px;
+  z-index: 9999;
+}
+
+.call-icon-button {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 1px solid #4f80ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #4f80ff;
+  transition: all 0.2s ease-in-out;
+}
+
+.call-icon-button.hero-style {
+  color: white !important;
+  border-color: white !important;
+  background-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.call-icon-button:hover {
+  background-color: #007bff;
+  color: white;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.call-icon-button .material-icons {
+  font-size: 24px;
+  line-height: 1;
+}
+
+
+/* =========================== */
+/* 섹션2: 말풍선 스타일 */
+/* =========================== */
+.section-chat {
+  height: 100vh;
+  scroll-snap-align: start;
+  padding: 4rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.message-bubble {
+  position: relative;
+  background-color: #ffffff;
+  color: #333;
+  border-radius: 20px;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto ; 
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  z-index: 1;
+}
+
+.message-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;  /* ✅ 말풍선에서 살짝 밑으로 */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #ffffff;
+  z-index: 0;  /* ✅ message-bubble 아래에 위치 */
+}
+
+.chat-img {
+  width: 250px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* 버튼 */
+.call-btn {
+  display: block;
+  font-size: 1rem;
+  padding: 0.65rem 1.5rem;
+  border-radius: 10px;
+  width: fit-content;
+  margin-bottom: 2rem;
+  border: 1px solid #4f80ff;
+  background-color: white;
+  color: #4f80ff;
+  transition: all 0.2s ease;
+}
+
+.call-btn:hover {
+  background-color: var(--primary-blue);
+  color: white;
+}
+
+
+/* =========================== */
+/* 섹션3~4: 작업카드 */
+/* =========================== */
+.section-work {
+  height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.section-work .container {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.row.row-cols-1 .col {
+  display: flex;
+}
+
+.section-work p {
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 0 1rem;          
+  line-height: 1.5;         
+  word-break: keep-all;     
+  white-space: normal;
+}
+
+.section-work .row.row-cols-1 {
+  margin-top: 1.2rem; 
+}
+
+.work-card {
+  width: 100%; 
+  height: 200px;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  border: none;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, #ffffff, #f8f9fc);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+  background-color: #ffffff;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 1.5rem;
+}
+
+.work-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.work-card-img {
+  width: 200px;
+  height: auto;
+  object-fit: cover;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  flex-shrink: 0;
+}
+
+.work-card-body {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #222;
+  flex: 1;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #ffffff;
+  border-left: 1px solid #f0f0f0;
+}
+
+.work-card-body h5 {
+  margin-bottom: 0.5rem;
+  color: #1d1d1f;
+  font-weight: 600;
+  text-align: center;
+}
+
+.work-card-body p {
+  font-size: 0.95rem;
+  color: #6c757d;
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+.footer-badge-line {
+  position: relative;
+  margin-top: 2.5rem;  /* 💡 버튼보다 위로! */
+  margin-bottom: 5rem; /* 💡 전화 버튼 피해서 아래 여백 확보 */
+  text-align: center;
+  font-size: 0.8rem;
+  color: #666;
+  opacity: 0.9;
+}
+
+.move-badge-line, .special-badge-line {
+  margin-top: 2rem;
+  margin-bottom: 3rem;  /* 전화 버튼 피해서 여백 확보 */
+  text-align: center;
+  font-size: 0.8rem;
+  color: #666;
+  opacity: 0.9;
+  line-height: 1.4;
+}
+
+/* =========================== */
+/* 모달창 */
+/* =========================== */
+.phone-modal {
+  max-width: 300px;
+  margin: auto;
+  border-radius: 16px;
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.phone-number {
+  font-size: 1.2rem;
+  margin: 0.8rem;
+  font-weight: 500;
+  color: var(--primary-blue);
+  letter-spacing: 0.5px;
+}
+
+.copy-btn {
+  font-size: 0.95rem;
+  padding: 0.55rem 1.4rem;
+  border-radius: 10px;
+  background-color: var(--soft-gray-bg);   
+  border: 1px solid var(--border-gray);   
+  color: var(--text-dark);                
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04); 
+  transition: all 0.2s ease-in-out;
+}
+
+.copy-btn:hover {
+  background-color: var(--background-blue); 
+  color: var(--primary-blue);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+.contact-hint {
+  font-size: 0.82rem;
+  color: #888;
+  margin-top: 1rem;
+  line-height: 1.4;
+}
+
+.modal-content {
+  animation: fadeInModal 0.4s ease-in-out;
+}
+
+.btn-close {
+  width: 1.25rem;
+  height: 1.25rem;
+  position: absolute;   
+  top: 8px;             
+  right: 20px;
+  background-size: 1.25rem;
+  opacity: 1;
+  z-index: 10;
+}
+
+.card-img-top {
+  height: 180px;
+  object-fit: cover;
+  border-radius: 0.75rem 0.75rem 0 0;
+}
+
+.modal-logo {
+  width: 230px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  padding-bottom: 0;
+  object-fit: contain;
+  object-position: top;
+  transform: translateY(40px);
+}
+
+/* 5페이지 */
+.section-gallery {
+  height: 100vh;
+  scroll-snap-align: start;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f3f2f5;
+}
+
+.section-gallery .container {
+  background-color: transparent; 
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0.5rem;
+}
+
+.section-gallery .btn-outline-primary {
+  border-radius: 6px;
+  padding: 0.4rem 1rem;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.section-gallery .btn-outline-primary:hover {
+  background-color: #4f80ff;
+  color: white;
+}
+
+.gallery-header h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.6rem;
+}
+
+.gallery-header span {
+  font-size: 0.75rem;
+  color: #888;
+}
+
+.gallery-subtitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent-navy); 
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.gallery-scroll-area {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 6px;
+  margin-top: 1rem;
+  overflow-x: hidden !important;
+}
+
+.gallery-scroll-area::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.gallery-scroll-area {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#galleryGrid {
+  touch-action: pan-y; 
+  display: flex;
+  flex-wrap: wrap;
+  overflow-x: hidden;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+#galleryGrid .col-6 {
+  padding: 4px;
+}
+
+#galleryGrid img {
+  width: 100%;         
+  object-fit: cover;       
+  display: block;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+}
+
+#galleryGrid img:hover {
+  transform: scale(1.03);     
+}
+
+.gallery-logo-wrapper {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.gallery-logo {
+  width: 200px;
+  display: block;
+  margin: 0 auto;
+}
+
+.animate-logo {
+  animation: slideAndSkid 1.4s ease-out forwards;
+  will-change: transform;
+}
+
+.logo-caption {
+  opacity: 0;
+  transform: translateY(20px);  /* 초기 위치: 아래쪽 */
+  transition: none;
+}
+
+.logo-caption.animate-drop {
+  animation: dropAndBounce 0.9s ease-out forwards;
+}
+
+
+.gallery-filter-btn {
+  display: inline-block;
+  padding: 0.45rem 1.2rem;
+  font-size: 0.78rem;
+  border-radius: 999px;
+  border: none;
+  background-color: #f1f3f5;     
+  color: #333;
+  font-weight: 500;
+  margin: 0.25rem;
+  transition: all 0.2s ease;
+  box-shadow: inset 0 0 0 1px #ddd;
+}
+
+.gallery-filter-btn:hover,
+.gallery-filter-btn.active {
+  background-color: var(--background-blue);
+  color: var(--primary-blue);
+  box-shadow: inset 0 0 0 1.5px var(--primary-blue);
+}
+
+
+.cta-btn {
+  align-self: flex-start;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  background-color: white;
+  color: var(--primary-blue);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: none;
+  margin-top: 0.6rem;
+}
+
+
+
+/* =========================== */
+/* 애니메이션 */
+/* =========================== */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceArrow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+
+@keyframes fadeInModal {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideAndSkid {
+  0%   { transform: translateX(100vw) rotate(0); opacity: 0; }
+  50%  { transform: translateX(-15%) rotate(-3deg); opacity: 1; }
+  65%  { transform: translateX(5%) rotate(3deg); }
+  75%  { transform: translateX(-3%) rotate(-2deg); }
+  85%  { transform: translateX(2%) rotate(1.5deg); }
+  92%  { transform: translateX(-1%) rotate(-1deg); }
+  100% { transform: translateX(0%) rotate(0deg); opacity: 1; }
+}
+
+@keyframes dropAndBounce {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(-4px);
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+
+/* =========================== */
+/* 반응형 */
+/* =========================== */
+/* Galaxy Fold, Z Flip (<= 320px) */
+@media (max-width: 320px) {
+
+  .intro-logo {
+    width: 250px;
+  }
+
+  .message-text {
+    font-size: 1rem;
+  }
+  
+  .section-work p {
+    margin-top: 1.5rem;
+    font-size: 15px;
+    white-space: normal;    
+    word-break: keep-all; 
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .work-card {
+    height: 200px;
+    margin-bottom:0;
+  }
+
+  .work-card-img {
+    width: 150px;
+  }
+
+  .section-work p {
+    padding: 0;
+  }
+
+  .scroll-hint {
+    font-size: 10px;
+  }
+
+  .footer-badge-line {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .move-badge-line { 
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+}
+
+/* iPhone SE / Galaxy A (321px ~ 375px) */
+@media (min-width: 321px) and (max-width: 375px) {
+  .intro-logo {
+    width: 250px;
+  }
+
+  .message-text {
+    font-size: 1rem;
+  }
+
+  .chat-img {
+    width: 250px;
+  }
+  .modal-logo {
+    width: 180px;
+  }
+
+  .footer-badge-line  {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .move-badge-line { 
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .gallery-filter-btn {
+    padding: 0.45rem 0.8rem;
+    margin: 0;
+  }
+
+  .work-card {
+    height: 180px;
+    margin-bottom:0;
+  }
+
+  .work-card-img {
+    width: 150px;
+  }
+  .work-card-body {
+    padding: 0;
+  }
+
+  .section-work p {
+    margin-top: 1.5rem;
+    font-size: 15px;
+    white-space: normal;
+    word-break: keep-all;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+}
+
+/* iPhone 12/13 Mini / Galaxy S (376px ~ 414px) */
+@media (min-width: 376px) and (max-width: 414px) {
+  .intro-logo {
+    width: 250px;
+  }
+  .intro-text {
+    font-size: 1.2rem;
+  }
+  .chat-img {
+    width: 220px;
+  }
+  .modal-logo {
+    width: 200px;
+  }
+
+  .work-card {
+    height: 180px;
+    margin-bottom:0;
+  }
+
+  .footer-badge-line  {
+    margin-bottom: 3rem;
+  }
+
+  .move-badge-line { 
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .gallery-filter-btn {
+    padding: 0.45rem 0.8rem;
+  }
+
+}
+@media (min-width: 415px) and (max-width: 420px) {
+  .footer-badge-line  {
+    margin-bottom: 3rem;
+  }
+
+  .move-badge-line { 
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .gallery-filter-btn {
+    padding: 0.45rem 0.8rem;
+  }
+
+}
+
+/* iPhone 12/13 Pro, Galaxy S22/23/24 (415px ~ 480px) */
+@media (min-width: 421px) and (max-width: 480px) {
+  .intro-logo {
+    width: 200px;
+  }
+  .intro-text {
+    font-size: 1.05rem;
+  }
+  .chat-img {
+    width: 240px;
+  }
+  .modal-logo {
+    width: 220px;
+  }
+
+  .section-work p {
+    font-size: 0.85rem;
+    text-align: center;
+    padding: 0 1rem;          
+    line-height: 1.5;         
+    word-break: keep-all;     
+    white-space: normal;
+  }
+  .section-work .row.row-cols-1 {
+    margin-top: 1.2rem; 
+  }
+
+  .section-work h2 {
+    font-size: 1.5rem;
+    padding: 0 1rem;
+    line-height: 1.4;
+  }
+
+  .work-card {
+    height: 200px;
+  }
+
+  .footer-badge-line  {
+    margin-bottom: 0;
+  }
+
+  .move-badge-line { 
+    margin-top: 1rem;
+    margin-bottom:0;
+  }
+
+}
+
+/* Galaxy Note, iPhone Plus, Pixel 7 Pro (481px ~ 540px) */
+@media (min-width: 481px) and (max-width: 540px) {
+  .intro-logo {
+    width: 220px;
+  }
+  .intro-text {
+    font-size: 1.1rem;
+  }
+  .chat-img {
+    width: 260px;
+  }
+  .modal-logo {
+    width: 220px;
+  }
+
+  .section-work p {
+    font-size: 0.85rem;
+    text-align: center;
+    padding: 0 1rem;          
+    line-height: 1.5;         
+    word-break: keep-all;     
+    white-space: normal;
+  }
+  .section-work .row.row-cols-1 {
+    margin-top: 1.2rem; 
+  }
+
+  .section-work h2 {
+    font-size: 1.5rem;
+    padding: 0 1rem;
+    line-height: 1.4;
+  }
+
+  .work-card {
+    height: 200px;
+  }
+
+  .footer-badge-line  {
+    margin-bottom: 0;
+  }
+
+  .move-badge-line { 
+    margin-top: 1rem;
+    margin-bottom: 0;
+  }
+}
+
+/* iPad Mini / Galaxy Tab 세로 (541px ~ 767px) */
+@media (min-width: 541px) and (max-width: 767px) {
+  .intro-logo {
+    width: 240px;
+  }
+  .intro-text {
+    font-size: 1.15rem;
+  }
+  .chat-img {
+    width: 280px;
+  }
+  .modal-logo {
+    width: 220px;
+  }
+
+  .section-work p {
+    font-size: 0.85rem;
+    text-align: center;
+    padding: 0 1rem;          
+    line-height: 1.5;         
+    word-break: keep-all;     
+    white-space: normal;
+  }
+  .section-work .row.row-cols-1 {
+    margin-top: 1.2rem; 
+  }
+
+  .section-work h2 {
+    font-size: 1.5rem;
+    padding: 0 1rem;
+    line-height: 1.4;
+  }
+
+  .work-card {
+    height: 200px;
+  }
+
+  .footer-badge-line  {
+    margin-bottom: 3rem;
+  }
+
+  .move-badge-line { 
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* iPad / Galaxy Tab 가로 (768px ~ 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .intro-logo {
+    width: 260px;
+  }
+  .intro-text {
+    font-size: 1.2rem;
+  }
+  
+}
+
+/* iPad Pro / Surface Duo (1024px ~ 1365px) */
+@media (min-width: 1024px) and (max-width: 1365px) {
+  .intro-logo {
+    width: 280px;
+  }
+  .intro-text {
+    font-size: 1.25rem;
+  }
+}
+
+/* 데스크탑 기본 (1366px 이상) */
+@media (min-width: 1366px) {
+  .intro-logo {
+    width: 300px;
+  }
+  .intro-text {
+    font-size: 1.3rem;
+  }
+}
